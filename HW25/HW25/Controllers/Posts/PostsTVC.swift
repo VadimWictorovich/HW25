@@ -41,7 +41,7 @@ class PostsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let postId = post[indexPath.row].id
-            NetworkService.deletePost(postId: postId) { [weak self] in
+            NetworkService.deletePost(postId: postId) { [weak self] _,_ in
                 guard let self else { return }
                 self.post.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
