@@ -31,8 +31,27 @@ class AlbumsTVC: UITableViewController {
         if editingStyle == .delete {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-           
         }    
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let albom = albums[indexPath.row]
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "PhotosCollectionVC") as? PhotosCollectionVC else { return }
+        vc.albom = albom
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func fetchAlbom() {
+        guard let user else { return }
+        NetworkService.fetchAlboms(userId: user.id) { [weak self] result, error in
+            if let error = error {
+                print(error)
+            } else if let alboms = result {
+                self?.albums = alboms
+                self?.tableView.reloadData()
+            }
+        }
     }
     
 
