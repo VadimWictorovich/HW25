@@ -32,14 +32,14 @@ class NetworkService {
     }
     
     static func fetchComments(postId: Int, callback: @escaping (_ result: [Comment]?, _ error: Error?) -> ()) {
-        let urlPath = "\(ApiConstants.commentsPath)/\(postId)"
+        let urlPath = "\(ApiConstants.commentsPath)?postId=\(postId)"
         AF.request(urlPath, method: .get, encoding: JSONEncoding.default)
             .response { response in
                 var comments: [Comment]?
                 var err: Error?
                 switch response.result {
                 case .success(let data):
-                    guard let data = data else {
+                    guard let data else {
                         callback(comments, err)
                         return
                     }

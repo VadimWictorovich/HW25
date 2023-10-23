@@ -49,6 +49,14 @@ class PostsTVC: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postId = post[indexPath.row].id
+        let sb = UIStoryboard(name: "PostFlow", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "CommentsTVC") as? CommentsTVC else { return }
+        vc.postId = postId
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func fetchPosts() {
         let userId = user?.id.description ?? ""
         let urlPath = "\(ApiConstants.postsPath)?userId=\(userId)"

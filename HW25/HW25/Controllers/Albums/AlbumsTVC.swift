@@ -11,6 +11,11 @@ class AlbumsTVC: UITableViewController {
 
     var user: User?
     var albums: [Albom] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchAlbom()
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         albums.count
@@ -53,6 +58,4 @@ class AlbumsTVC: UITableViewController {
             }
         }
     }
-    
-
 }

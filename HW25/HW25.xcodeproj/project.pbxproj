@@ -24,6 +24,7 @@
 		6C7B17442AE06EBD00D88052 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B17432AE06EBD00D88052 /* CommentModel.swift */; };
 		6C7B17462AE0747800D88052 /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B17452AE0747800D88052 /* PhotosModel.swift */; };
 		6C7B17492AE638C500D88052 /* PhotosCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B17482AE638C500D88052 /* PhotosCollectionVC.swift */; };
+		6C7B174C2AE63AEF00D88052 /* CommentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B174B2AE63AEF00D88052 /* CommentsTVC.swift */; };
 		6CB13C392AD7BCEA000C68FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB13C382AD7BCEA000C68FF /* AppDelegate.swift */; };
 		6CB13C3B2AD7BCEA000C68FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB13C3A2AD7BCEA000C68FF /* SceneDelegate.swift */; };
 		6CB13C402AD7BCEA000C68FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB13C3E2AD7BCEA000C68FF /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		6C7B17432AE06EBD00D88052 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		6C7B17452AE0747800D88052 /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
 		6C7B17482AE638C500D88052 /* PhotosCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionVC.swift; sourceTree = "<group>"; };
+		6C7B174B2AE63AEF00D88052 /* CommentsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTVC.swift; sourceTree = "<group>"; };
 		6CB13C352AD7BCEA000C68FF /* HW25.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW25.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB13C382AD7BCEA000C68FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CB13C3A2AD7BCEA000C68FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 			path = Photos;
 			sourceTree = "<group>";
 		};
+		6C7B174A2AE63AD100D88052 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				6C7B174B2AE63AEF00D88052 /* CommentsTVC.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
 		6CB13C2C2AD7BCEA000C68FF = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		6CB13C542AD7BE62000C68FF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6C7B174A2AE63AD100D88052 /* Comments */,
 				6C7B17472AE6388B00D88052 /* Photos */,
 				6C7B172D2ADE895000D88052 /* Albums */,
 				6C7B172A2ADE875400D88052 /* Posts */,
@@ -327,6 +338,7 @@
 				6C7B17442AE06EBD00D88052 /* CommentModel.swift in Sources */,
 				6C7B172F2ADE896B00D88052 /* AlbumsTVC.swift in Sources */,
 				6C7B17352ADE935100D88052 /* NetworkService.swift in Sources */,
+				6C7B174C2AE63AEF00D88052 /* CommentsTVC.swift in Sources */,
 				6C7B17232ADE06C700D88052 /* DetailVC.swift in Sources */,
 				6C7B17392ADEA1C100D88052 /* ExtentionVC.swift in Sources */,
 				6CB13C592AD7BF3B000C68FF /* ActionCVCell.swift in Sources */,

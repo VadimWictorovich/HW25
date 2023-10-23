@@ -129,16 +129,16 @@
             </objects>
             <point key="canvasLocation" x="1988.5496183206105" y="-257.04225352112678"/>
         </scene>
-        <!--Table View Controller-->
+        <!--CommentsTVC-->
         <scene sceneID="M5x-5b-BoT">
             <objects>
-                <tableViewController id="bDM-6i-3FD" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CommentsTVC" id="bDM-6i-3FD" customClass="CommentsTVC" customModule="HW25" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="LuI-RP-bXL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Mq7-Z8-st5" detailTextLabel="df2-2j-YDf" style="IBUITableViewCellStyleSubtitle" id="Wbo-h0-rWP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Mq7-Z8-st5" detailTextLabel="df2-2j-YDf" style="IBUITableViewCellStyleSubtitle" id="Wbo-h0-rWP">
                                 <rect key="frame" x="0.0" y="50" width="393" height="77.666664123535156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wbo-h0-rWP" id="JK3-GW-Cpz">
