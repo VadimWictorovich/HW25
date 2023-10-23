@@ -25,6 +25,12 @@
 		6C7B17462AE0747800D88052 /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B17452AE0747800D88052 /* PhotosModel.swift */; };
 		6C7B17492AE638C500D88052 /* PhotosCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B17482AE638C500D88052 /* PhotosCollectionVC.swift */; };
 		6C7B174C2AE63AEF00D88052 /* CommentsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B174B2AE63AEF00D88052 /* CommentsTVC.swift */; };
+		6C7B174E2AE6D73600D88052 /* ToDosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B174D2AE6D73600D88052 /* ToDosModel.swift */; };
+		6C7B17512AE6D96100D88052 /* ToDosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B17502AE6D96100D88052 /* ToDosTVC.swift */; };
+		6C7B17592AE6E34E00D88052 /* PhotosCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B17572AE6E34E00D88052 /* PhotosCVCell.swift */; };
+		6C7B175A2AE6E34E00D88052 /* PhotosCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C7B17582AE6E34E00D88052 /* PhotosCVCell.xib */; };
+		6C7B175C2AE6E8C500D88052 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B175B2AE6E8C500D88052 /* PhotoVC.swift */; };
+		6C7B175E2AE6EA1300D88052 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7B175D2AE6EA1300D88052 /* CacheManager.swift */; };
 		6CB13C392AD7BCEA000C68FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB13C382AD7BCEA000C68FF /* AppDelegate.swift */; };
 		6CB13C3B2AD7BCEA000C68FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB13C3A2AD7BCEA000C68FF /* SceneDelegate.swift */; };
 		6CB13C402AD7BCEA000C68FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB13C3E2AD7BCEA000C68FF /* Main.storyboard */; };
@@ -55,6 +61,12 @@
 		6C7B17452AE0747800D88052 /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
 		6C7B17482AE638C500D88052 /* PhotosCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionVC.swift; sourceTree = "<group>"; };
 		6C7B174B2AE63AEF00D88052 /* CommentsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTVC.swift; sourceTree = "<group>"; };
+		6C7B174D2AE6D73600D88052 /* ToDosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDosModel.swift; sourceTree = "<group>"; };
+		6C7B17502AE6D96100D88052 /* ToDosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDosTVC.swift; sourceTree = "<group>"; };
+		6C7B17572AE6E34E00D88052 /* PhotosCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCVCell.swift; sourceTree = "<group>"; };
+		6C7B17582AE6E34E00D88052 /* PhotosCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotosCVCell.xib; sourceTree = "<group>"; };
+		6C7B175B2AE6E8C500D88052 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
+		6C7B175D2AE6EA1300D88052 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		6CB13C352AD7BCEA000C68FF /* HW25.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW25.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB13C382AD7BCEA000C68FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CB13C3A2AD7BCEA000C68FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				6C7B17342ADE935100D88052 /* NetworkService.swift */,
+				6C7B175D2AE6EA1300D88052 /* CacheManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -113,7 +126,9 @@
 		6C7B17472AE6388B00D88052 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				6C7B17522AE6E1C200D88052 /* Cell */,
 				6C7B17482AE638C500D88052 /* PhotosCollectionVC.swift */,
+				6C7B175B2AE6E8C500D88052 /* PhotoVC.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -124,6 +139,23 @@
 				6C7B174B2AE63AEF00D88052 /* CommentsTVC.swift */,
 			);
 			path = Comments;
+			sourceTree = "<group>";
+		};
+		6C7B174F2AE6D94100D88052 /* ToDos */ = {
+			isa = PBXGroup;
+			children = (
+				6C7B17502AE6D96100D88052 /* ToDosTVC.swift */,
+			);
+			path = ToDos;
+			sourceTree = "<group>";
+		};
+		6C7B17522AE6E1C200D88052 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6C7B17572AE6E34E00D88052 /* PhotosCVCell.swift */,
+				6C7B17582AE6E34E00D88052 /* PhotosCVCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		6CB13C2C2AD7BCEA000C68FF = {
@@ -175,6 +207,7 @@
 				6C7B17322ADE8B5B00D88052 /* AlbumModel.swift */,
 				6C7B17452AE0747800D88052 /* PhotosModel.swift */,
 				6C7B17432AE06EBD00D88052 /* CommentModel.swift */,
+				6C7B174D2AE6D73600D88052 /* ToDosModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,6 +215,7 @@
 		6CB13C542AD7BE62000C68FF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6C7B174F2AE6D94100D88052 /* ToDos */,
 				6C7B174A2AE63AD100D88052 /* Comments */,
 				6C7B17472AE6388B00D88052 /* Photos */,
 				6C7B172D2ADE895000D88052 /* Albums */,
@@ -311,6 +345,7 @@
 				6C7B17272ADE838100D88052 /* PostFlow.storyboard in Resources */,
 				6CB13C452AD7BCEC000C68FF /* LaunchScreen.storyboard in Resources */,
 				6CB13C422AD7BCEC000C68FF /* Assets.xcassets in Resources */,
+				6C7B175A2AE6E34E00D88052 /* PhotosCVCell.xib in Resources */,
 				6C7B17292ADE83A100D88052 /* AlbomsAndPhotosFlow.storyboard in Resources */,
 				6CB13C402AD7BCEA000C68FF /* Main.storyboard in Resources */,
 			);
@@ -333,6 +368,7 @@
 				6C7B17462AE0747800D88052 /* PhotosModel.swift in Sources */,
 				6C7B172C2ADE877300D88052 /* PostsTVC.swift in Sources */,
 				6CB13C512AD7BDED000C68FF /* APIConstans.swift in Sources */,
+				6C7B175E2AE6EA1300D88052 /* CacheManager.swift in Sources */,
 				6CB13C5E2AD7BFED000C68FF /* ImageVC.swift in Sources */,
 				6C7B17252ADE784500D88052 /* MapVC.swift in Sources */,
 				6C7B17442AE06EBD00D88052 /* CommentModel.swift in Sources */,
@@ -340,11 +376,15 @@
 				6C7B17352ADE935100D88052 /* NetworkService.swift in Sources */,
 				6C7B174C2AE63AEF00D88052 /* CommentsTVC.swift in Sources */,
 				6C7B17232ADE06C700D88052 /* DetailVC.swift in Sources */,
+				6C7B175C2AE6E8C500D88052 /* PhotoVC.swift in Sources */,
+				6C7B174E2AE6D73600D88052 /* ToDosModel.swift in Sources */,
 				6C7B17392ADEA1C100D88052 /* ExtentionVC.swift in Sources */,
 				6CB13C592AD7BF3B000C68FF /* ActionCVCell.swift in Sources */,
 				6CB13C532AD7BE57000C68FF /* CollectionVC.swift in Sources */,
 				6CB13C3B2AD7BCEA000C68FF /* SceneDelegate.swift in Sources */,
 				6CB13C602AD7C4BC000C68FF /* UsersTVC.swift in Sources */,
+				6C7B17512AE6D96100D88052 /* ToDosTVC.swift in Sources */,
+				6C7B17592AE6E34E00D88052 /* PhotosCVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

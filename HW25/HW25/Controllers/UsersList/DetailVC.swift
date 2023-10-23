@@ -53,11 +53,10 @@ class DetailVC: UIViewController {
     }
     
     @IBAction func todosAction() {
-        //let sb = UIStoryboard(name: "Main", bundle: nil)
-//        guard let vc = sb.instantiateViewController(withIdentifier: "MapVC") as? MapVC else { return }
-     //   vc.user = user
-
-//        navigationController?.pushViewController(vc, animated: true)
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "ToDosTVC") as? ToDosTVC else { return }
+        vc.user = user
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setupUI() {

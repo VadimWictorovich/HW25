@@ -8,84 +8,74 @@
 import UIKit
 
 
-class PhotosCollectionVC: UICollectionViewController {
+final class PhotosCollectionVC: UICollectionViewController {
     
-    private let reuseIdentifier = "Cell"
     var albom: Albom?
     var photos: [Photos] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        collectionView.register(UINib(nibName: "PhotosCVCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
+        fetchPhoto()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let layout = UICollectionViewFlowLayout()
+        let sizeWH = UIScreen.main.bounds.width / 3 - 10
+        layout.itemSize = CGSize(width: sizeWH, height: sizeWH)
+        collectionView.collectionViewLayout = layout
     }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        photos.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let photo = photos[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PhotosCVCell
+        cell.thumbnailUrl = photo.thumbnailUrl
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ -> UIMenu in
+            let deleteAction = UIAction(title: "Удалить", image: nil) { action in
+                self?.deletePhoto(at: indexPath) }
+            let menu = UIMenu(title: "", children: [deleteAction])
+            return menu
+        }
+        return configuration
     }
-    */
-
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.row]
+        let vc = PhotoVC()
+        vc.photo = photo
+        self.present(vc, animated: true)
+    }
+    
+    private func fetchPhoto() {
+        guard let albom else { return }
+        NetworkService.fetchPhotos(albumId: albom.id) { [weak self] result, error in
+            if let error = error {
+                print(error)
+            } else if let photos = result {
+                self?.photos = photos
+                self?.collectionView.reloadData()
+            }
+        }
+    }
+    
+    private func deletePhoto(at indexPath: IndexPath) {
+        guard let albom else { return }
+        NetworkService.deletePhotos(albumId: albom.id) { [weak self] _, error in
+                self?.photos.remove(at: indexPath.row)
+                self?.collectionView.deleteItems(at: [indexPath])
+            if let error {
+                print(error)
+            }
+        }
+    }
 }
