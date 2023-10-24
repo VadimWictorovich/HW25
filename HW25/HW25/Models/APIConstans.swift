@@ -10,8 +10,8 @@ import Foundation
 struct ApiConstants {
     
     /// Local server path
-    //static let serverPath = "http://localhost:3000/"
-    static let serverPath = "https://jsonplaceholder.typicode.com/"
+    static let serverPath = "http://localhost:3000/"
+    //static let serverPath = "https://jsonplaceholder.typicode.com/"
     /// Users
     static let usersPath = serverPath + "users"
     static let usersURL = URL(string: usersPath)

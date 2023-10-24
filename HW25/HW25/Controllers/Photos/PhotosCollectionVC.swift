@@ -41,7 +41,13 @@ final class PhotosCollectionVC: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ -> UIMenu in
             let deleteAction = UIAction(title: "Удалить", image: nil) { action in
-                self?.deletePhoto(at: indexPath) }
+                guard let self else { return }
+                let photoId = self.photos[indexPath.row].id
+                NetworkService.deletePhotos(photoId: photoId) { _, _ in
+                    self.photos.remove(at: indexPath.row)
+                    self.collectionView.deleteItems(at: [indexPath])
+                    }
+                }
             let menu = UIMenu(title: "", children: [deleteAction])
             return menu
         }
@@ -64,17 +70,6 @@ final class PhotosCollectionVC: UICollectionViewController {
             } else if let photos = result {
                 self?.photos = photos
                 self?.collectionView.reloadData()
-            }
-        }
-    }
-    
-    private func deletePhoto(at indexPath: IndexPath) {
-        guard let albom else { return }
-        NetworkService.deletePhotos(albumId: albom.id) { [weak self] _, error in
-                self?.photos.remove(at: indexPath.row)
-                self?.collectionView.deleteItems(at: [indexPath])
-            if let error {
-                print(error)
             }
         }
     }

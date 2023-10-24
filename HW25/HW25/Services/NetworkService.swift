@@ -131,19 +131,24 @@ class NetworkService {
             }
     }
     
-    static func deletePhotos(albumId: Int, callback: @escaping (_ result: [Photos]?, _ error: Error?) -> ()) {
-        let urlPath = "\(ApiConstants.photosPath)?albumId=\(albumId)"
+    static func deletePhotos(photoId: Int, callback: @escaping (_ result: [Photos]?, _ error: Error?) -> ()) {
+        let urlPath = "\(ApiConstants.photosPath)/\(photoId)"
             AF.request(urlPath, method: .delete, encoding: JSONEncoding.default)
             .response { response in
             var photos: [Photos]?
             var err: Error?
                 switch response.result {
                 case .success(let data):
-                    guard let data = data else {
+                    guard let data else {
                         callback(photos, err)
                         return
                     }
                     print(JSON(data))
+                    do {
+                        photos = try JSONDecoder().decode([Photos].self, from: data)
+                    } catch (let decodErr) {
+                        print(decodErr)
+                    }
                 case .failure(let error):
                     err = error
                 }
