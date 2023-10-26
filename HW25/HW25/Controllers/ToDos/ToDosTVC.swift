@@ -1,30 +1,31 @@
 //
-//  AlbumsTVC.swift
+//  ToDosTVC.swift
 //  HW25
 //
-//  Created by Вадим Игнатенко on 17.10.23.
+//  Created by Вадим Игнатенко on 23.10.23.
 //
 
 import UIKit
 
-class AlbumsTVC: UITableViewController {
+class ToDosTVC: UITableViewController {
 
     var user: User?
-    var albums: [Albom] = []
+    var toDos: [ToDos] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchAlbom()
+        fetchToDos()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        albums.count
+        toDos.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let albom = albums[indexPath.row]
-        cell.textLabel?.text = albom.title
+        let toDos = toDos[indexPath.row]
+        cell.textLabel?.text = toDos.title
+        cell.detailTextLabel?.text = toDos.completed?.description
         return cell
     }
     
@@ -36,24 +37,16 @@ class AlbumsTVC: UITableViewController {
         if editingStyle == .delete {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-        }    
+        }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let albom = albums[indexPath.row]
-        let sb = UIStoryboard(name: "AlbomsAndPhotosFlow", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "PhotosCollectionVC") as? PhotosCollectionVC else { return }
-        vc.albom = albom
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func fetchAlbom() {
+    private func fetchToDos() {
         guard let user else { return }
-        NetworkService.fetchAlboms(userId: user.id) { [weak self] result, error in
+        NetworkService.fetchToDos(userId: user.id) { [weak self] result, error in
             if let error = error {
                 print(error)
-            } else if let alboms = result {
-                self?.albums = alboms
+            } else if let toDos = result{
+                self?.toDos = toDos
                 self?.tableView.reloadData()
             }
         }

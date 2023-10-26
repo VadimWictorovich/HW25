@@ -26,7 +26,6 @@ class PostsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         post.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -41,12 +40,20 @@ class PostsTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let postId = post[indexPath.row].id
-            NetworkService.deletePost(postId: postId) { [weak self] in
+            NetworkService.deletePost(postId: postId) { [weak self] _,_ in
                 guard let self else { return }
                 self.post.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let postId = post[indexPath.row].id
+        let sb = UIStoryboard(name: "PostFlow", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "CommentsTVC") as? CommentsTVC else { return }
+        vc.postId = postId
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private func fetchPosts() {
